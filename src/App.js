@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router';
 import './App.css';
+import FirstChild from './component/FirstChild';
+import SecondChild from './component/SecondChild';
+import { useNavigate } from 'react-router';
 
 function App() {
+
+  const navigate = useNavigate()
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path='/' element={
+
+          <>
+            <button onClick={() => navigate('first')}>First Child</button>
+            <button onClick={() => navigate('second')}>Second Child</button>
+          </>
+
+        }></Route>
+        <Route path='/first' element={<FirstChild />}></Route>
+        <Route path='/second' element={<SecondChild />}></Route>
+      </Routes>
+
+      {/* <FirstChild /> */}
+      {/* <SecondChild /> */}
     </div>
   );
 }
